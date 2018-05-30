@@ -1,0 +1,66 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+  <!-- <h1>
+    {{ data.stringify() }}!
+  </h1> -->
+  <h4>User List</h4>
+  <!-- <form #myForm="ngForm" (ngSubmit)="submit(myForm)">
+    <table class="table" style="width:70%">
+      <tr>
+        <td>
+          <input class="form-control" type="text"  name="name" minlength="3" id="name" [(ngModel)]="name" #txtname="ngModel" placeholder="Name" required />
+          <div class="alert alert-danger" *ngIf="txtname.touched && !txtname.valid">Enter Name</div>
+        </td>
+        <td>
+          <input class="form-control" type="text" name="uname"  minlength="3" id="uname" [(ngModel)]="uname" #txtuname="ngModel"  placeholder="User name" required />
+          <div class="alert alert-danger" *ngIf="txtuname.touched && !txtuname.valid">Enter User Name</div>
+        </td>
+        <td><input class="form-control" type="password" name="pwd" minlength="3" id="pwd" [(ngModel)]="pwd" #txtpwd="ngModel"  placeholder="******" required /></td>
+        <td><input class="form-control" type="number" name="mb" minlength="9" maxlength="9" id="mb" [(ngModel)]="mb" #txtmb="ngModel"   placeholder="Mobile No." required /></td>
+        <td><button type="submit" class="btn btn-primary btn-sm" [disabled]="!myForm.valid">Add User</button></td>
+      </tr>
+    </table> -->
+    <form [formGroup]="formdata" (ngSubmit)="submit(myForm)">
+        <table class="table" style="width:70%">
+          <tr>
+            <td>
+              <input class="form-control" type="text" formControlName="name"  name="name" minlength="3" id="name"  placeholder="Name" required />
+              <!-- <div class="alert alert-danger" *ngIf="txtname.touched && !txtname.valid">Enter Name</div> -->
+            </td>
+            <td>
+              <input class="form-control" type="text" formControlName="uname" name="uname"  minlength="3" id="uname" placeholder="User name" required />
+              <!-- <div class="alert alert-danger" *ngIf="txtuname.touched && !txtuname.valid">Enter User Name</div> -->
+            </td>
+            <td><input class="form-control" type="password" formControlName="pwd" name="pwd" minlength="3" id="pwd" placeholder="******" required /></td>
+            <td><input class="form-control" type="number" formControlName="mb" name="mb" minlength="9" maxlength="9" id="mb" placeholder="Mobile No." required /></td>
+            <td><button type="submit" class="btn btn-primary btn-sm">Add User</button></td>
+          </tr>
+        </table>
+    <!-- {{myForm}} -->
+  </form>
+  <div>
+    <table class="table"style="width:80%">
+      <thead>
+        <th>User Id </th>
+        <th>Name</th>
+        <th>User name</th>
+        <th>Mobile No.</th>
+        <th colspan="2"></th>
+      </thead>
+      <tr *ngFor="let user of data; let row_no = index">
+        <td item-width="15%"><div [innerHtml]="user?.id"></div> </td>
+        <td item-width="15%"><div [innerHtml]="user?.name" [hidden]="user.updateMode"></div>  <input class="form-control" [ngClass]="{hidden: !user.updateMode}" [hidden]="!user.updateMode" type="text" [(ngModel)]="user.name"  [value]="user.name"></td>
+        <td item-width="15%"><div [innerHtml]="user?.username" [hidden]="user.updateMode"></div>  <input class="form-control" [ngClass]="{hidden: !user.updateMode}" [hidden]="!user.updateMode" type="text" [(ngModel)]="user.username"  [value]="user.username"></td>
+        <td item-width="15%"><div [innerHtml]="user?.mobile" [hidden]="user.updateMode"></div>  <input class="form-control" [ngClass]="{hidden: !user.updateMode}" [hidden]="!user.updateMode" type="text" [(ngModel)]="user.mobile"  [value]="user.mobile"></td>
+        <td item-width="20%">
+          <button class="btn btn-primary btn-sm" [ngClass]="{hidden: !user.updateMode}" (click)="updateUser(user)">Update</button> 
+          <button class="btn btn-primary btn-sm" [ngClass]="{hidden: user.updateMode}" (click)="editRow(row_no)">Edit</button>
+        </td>
+        <td item-width="15%"><button class="btn btn-primary btn-sm" (click)="deleteUser(user.id)">Delete</button></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+

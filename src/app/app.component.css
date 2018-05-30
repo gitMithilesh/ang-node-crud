@@ -1,0 +1,12 @@
+.user-table{
+    width: 60%;
+    border-collapse: collapse;
+    border: 1px solid #000000;
+}
+.user-table td, .user-table th{
+    border: 1px solid #000000;
+    padding: 1%;
+}
+.user-table th{
+    background: #929292;
+}
