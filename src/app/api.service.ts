@@ -15,6 +15,7 @@ export class ApiService {
   // path = './assets/users.json';
   constructor(private http: Http) { }
   getUsers(): Observable<any> {
+    console.log(this);
     return this.http.get(this.UserUrl);
   }
 
