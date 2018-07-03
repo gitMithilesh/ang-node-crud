@@ -29,7 +29,7 @@ export class ApiService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     const userData = { id : user.id, name : user.name, username: user.username, password: user.password, mobile: user.mobile};
-    console.log(userData);
+    // console.log(userData);
     return this.http.post(this.updateUserUrl, userData);
   }
   deleteUser (id): Observable<any> {
