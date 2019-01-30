@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { Headers, RequestOptions } from '@angular/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' 
 })
 export class ApiService {
   UserUrl = 'http://localhost:1200/users';
